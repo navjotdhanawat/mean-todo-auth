@@ -1,0 +1,16 @@
+<div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    <strong>Error!</strong> {{error}}
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" id="title" [(ngModel)]="title">
+  </div>
+  <div class="form-group">
+    <label for="description">Password:</label>
+    <textarea class="form-control" id="description" [(ngModel)]="description"> </textarea>
+  </div>
+  <button type="button" (click)="addTodo()" class="btn btn-primary">Submit</button>
+</div>
