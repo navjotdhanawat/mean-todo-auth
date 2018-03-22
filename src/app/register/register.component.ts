@@ -1,15 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../auth.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
 
-  constructor() { }
+export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
+  error: any;
+
+  constructor(public auth:AuthService, public router: Router) {
+    this.registerForm = new FormGroup({
+      firstname:  new FormControl(),
+      lastname:  new FormControl(),
+      email:  new FormControl(),
+      password:  new FormControl()
+    });
+  }
 
   ngOnInit() {
   }
 
+  register(data) {
+    console.log('-------------------');
+    debugger
+    this.auth.register(this.registerForm.value, status => {
+      if (!status) {
+        this.error = 'Something went wrong';
+        return;
+      }
+      this.router.navigateByUrl('/login');
+    })
+  }
 }
