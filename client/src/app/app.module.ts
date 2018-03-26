@@ -14,6 +14,7 @@ import { rootRouterConfig } from './app.route';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { TodoService } from './todo.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AuthService } from './auth.service';
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,8 @@
+<div *ngFor="let todo of todos" class="card mt-3">
+  <div class="card-header">
+    {{todo.title}}
+    <button type="button" (click)="deleteTodo(todo._id)" style="float: right;" class="btn btn-danger">Delete</button>
+  </div>
+  <div class="card-body">{{todo.desc}}</div>
+  <div class="card-footer">{{todo.status ? 'Completed' : 'Inprogress'}}</div>
+</div>
